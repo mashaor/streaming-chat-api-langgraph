@@ -1,4 +1,4 @@
-# Chat Agent
+# Streamin API Chat Agent using Langgraph
 
 Project showing how to build a production-style chat agent that:
 

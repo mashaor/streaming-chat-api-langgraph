@@ -54,7 +54,7 @@ result = run_chat_agent(
     user_input="What are the latest biomarkers related to longevity?",
     user_id="demo-user-123",
     session_id=None,
-    enable_streaming=False,
+    enable_streaming=True,
 )
 
 print(result)

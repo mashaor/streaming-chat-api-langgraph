@@ -1,0 +1,5 @@
+dotenv
+ uvicorn
+ fastapi
+ langgraph
+ langchain_openai

@@ -1,4 +1,4 @@
-# Chat Agent Tutorial
+# Chat Agent
 
 Project showing how to build a production-style chat agent that:
 
@@ -26,7 +26,7 @@ Project showing how to build a production-style chat agent that:
 - [Adapting the Classifier Prompt](#adapting-the-classifier-prompt)
 - [Extending the Agent](#extending-the-agent)
 - [Troubleshooting](#troubleshooting)
-- [Design Principles Highlighted by This Tutorial](#design-principles-highlighted-by-this-tutorial)
+- [Design Principles](#design-principles)
 - [License](#license)
 
 ## Quick Start
@@ -103,7 +103,7 @@ Routing is context-sensitive. The classifier sees a compacted version of prior t
 - Maintain user intent and constraints gathered earlier (e.g., location, preferences).
 - Avoid misrouting when a short user message depends on prior context.
 
-In this tutorial, `get_chat_history` retrieves prior messages and `create_compact_chat_history` reduces them to an LLM-friendly string. This gives the router enough context without overloading the prompt.
+`get_chat_history` retrieves prior messages and `create_compact_chat_history` reduces them to an LLM-friendly string. This gives the router enough context without overloading the prompt.
 
 ## Graph Architecture (`chat_agent/graph.py`)
 
@@ -170,7 +170,7 @@ Key nodes:
 
 ## Why deterministic routing vs. generic tool-calling
 
-Many frameworks provide generic tool-calling (e.g., auto tool selection based solely on a function list). This tutorial opts for a deterministic, single-step classifier that emits a strict decision used to pick a node. Benefits:
+Many frameworks provide generic tool-calling (e.g., auto tool selection based solely on a function list). This is a deterministic, single-step classifier that emits a strict decision used to pick a node. Benefits:
 
 - Predictability and debuggability — one explicit routing decision with rationale makes runs easy to inspect and log.
 - Strong guardrails — you can reject requests up front (e.g., creative writing) before any tool is invoked.
@@ -191,7 +191,7 @@ In many chat applications where reliability, compliance, and observability are p
 - Each tool:
   - Accepts `user_input` and `user_id`.
   - Returns a dict: `{ "status": "ok" | "error", "response" | "error": ... }`.
-  - In this tutorial, tools sleep briefly (to mimic I/O), log progress, and return a stubbed response string.
+  - Tools sleep briefly (to mimic I/O), log progress, and return a stubbed response string.
 
 Tip: Keep tool interfaces simple and deterministic. They’re easy to test and mock.
 
@@ -317,7 +317,7 @@ If you add a new route, update:
 - Nothing streams in streaming mode
   - Confirm `enable_streaming=True` and that your server forwards `graph.stream(...)` chunks to the client.
 
-## Design Principles Highlighted by This Tutorial
+## Design Principles
 
 - Clear separation of concerns between routing (LLM), orchestration (graph), domain logic (tools), and I/O (db/logger/streaming).
 - Strong typing with Pydantic models for structured LLM I/O.

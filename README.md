@@ -1,14 +1,12 @@
 # Chat Agent Tutorial
 
-An educational, end-to-end tutorial project showing how to build a production-style chat agent that:
+Project showing how to build a production-style chat agent that:
 
 - Routes user requests to specialized tools (topic-specific functions)
 - Streams intermediate steps to the UI
 - Stores and recalls chat history
 - Handles rejections and guardrails
 - Provides both normal and streaming response modes
-
-This README walks through the entire flow, architecture, and how to extend it.
 
 ## Table of contents
 
@@ -33,7 +31,7 @@ This README walks through the entire flow, architecture, and how to extend it.
 
 ## Quick Start
 
-- Python 3.10+
+- Python 3.11+
 
 Install dependencies (create a virtualenv if you prefer):
 
